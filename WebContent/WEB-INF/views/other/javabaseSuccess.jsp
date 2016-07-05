@@ -5,15 +5,10 @@
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <title>Insert title here</title>
-<LINK rel=stylesheet type=text/css href="<s:url value="/"/>resources/css/global.css" />
 <style>
-
 </style>
 </head>
 <body>
-
-<div id="container">
-</div>
 
 </body>
 </html>

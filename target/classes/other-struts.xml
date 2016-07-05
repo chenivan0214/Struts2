@@ -4,8 +4,22 @@
   "http://struts.apache.org/dtds/struts-2.0.dtd">
 <struts>
   <package name="other" namespace="/other" extends="default">
-    <action name="form" class="com.action.other.StrutsTagAction" method="form">
-      <result name="form_success">/WEB-INF/views/other/formSuccess.jsp</result>
+  
+    <!-- Map -->
+    <action name="mapSample1" class="com.action.other.JavabaseAction" method="mapSample1">
+      <result name="map_sample1">/WEB-INF/views/other/javabaseSuccess.jsp</result>
+    </action><action name="mapSample2" class="com.action.other.JavabaseAction" method="mapSample2">
+      <result name="map_sample2">/WEB-INF/views/other/javabaseSuccess.jsp</result>
+    </action>
+    
+    <!-- List -->
+    <action name="listSample1" class="com.action.other.JavabaseAction" method="listSample1">
+      <result name="list_sample1">/WEB-INF/views/other/javabaseSuccess.jsp</result>
+    </action>
+    
+    <!-- No UI Tag -->
+    <action name="nonui" class="com.action.other.StrutsTagAction" method="nonUi">
+      <result name="nonui_success">/WEB-INF/views/other/nonuiSuccess.jsp</result>
     </action>
   </package>
 </struts>
