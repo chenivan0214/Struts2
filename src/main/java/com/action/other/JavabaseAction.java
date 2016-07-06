@@ -11,6 +11,80 @@ import com.opensymphony.xwork2.ActionSupport;
 
 public class JavabaseAction extends ActionSupport {
     private static final long serialVersionUID = 1L;
+    
+    public String string() {
+        String string1 = "string1"; //String string1 = new String("string");
+        String string2 = "string2";
+        String string3 = "string3";
+        
+        //取得特定位置
+        System.out.println(string1.charAt(1));
+        
+        //比較兩字串大小
+        //0表示相等，-1表示不相等
+        System.out.println(string1.compareTo(string1));
+        
+        //比較兩字串內容
+        System.out.println(string1.equals(string3));
+        
+        //比較兩字串記憶體位址
+        System.out.println(string1 == string2);
+        
+        //字串連接
+        string2 = string1.concat(string2);
+        System.out.println(string2);
+        
+        //找尋特定字元
+        //不存在返回-1
+        System.out.println(string1.indexOf('s'));
+        
+        //字串長度
+        System.out.println(string1.length());
+        
+        //取代replace("被取代的字串", "要取代的字串")
+        string2 = string1.replace("str", "string");
+        System.out.println(string2);
+        
+        //取代replaceAll("被取代的字串reg", "要取代的字串")
+        string2 = string1.replaceAll("s|1", "z");
+        System.out.println(string2);
+        
+        //取出指定位置
+        System.out.println(string1.substring(1,3));
+        
+        //轉成小寫
+        System.out.println(string1.toLowerCase());
+        
+        //轉成大寫
+        System.out.println(string1.toUpperCase());
+        
+        //去除trim
+        string3 = string3.replaceAll("s|1", "     ");
+        System.out.println(string3);
+        System.out.println(string3.trim());
+        
+        return "string";
+    }
+    
+    public String typeChange() {
+        //int轉string
+        int a = 123;
+        System.out.println(Integer.toString(a));
+        System.out.println(Integer.toString(a).getClass().getName());
+        
+        //string轉int
+        String b = "123";
+        System.out.println(Integer.parseInt(b));
+        
+        //檢查兩者型態是否相同
+        Integer c = new Integer(123);
+        String n1 = Integer.toString(a).getClass().getName();
+        String n2 = c.getClass().getName();
+        System.out.println(n1);
+        System.out.println(c.toString());
+        
+        return "type_change";
+    }
 
     public String mapSample1() {
         Map<Integer, String> map = new HashMap<Integer, String>();
