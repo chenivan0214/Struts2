@@ -15,6 +15,11 @@
       <result name="type_change">/WEB-INF/views/other/javabaseSuccess.jsp</result>
     </action>
     
+    <!-- Date -->
+    <action name="dateSample" class="com.action.other.JavabaseAction" method="dateSample">
+      <result name="date_sample">/WEB-INF/views/other/javabaseSuccess.jsp</result>
+    </action>
+    
     <!-- Map -->
     <action name="mapSample1" class="com.action.other.JavabaseAction" method="mapSample1">
       <result name="map_sample1">/WEB-INF/views/other/javabaseSuccess.jsp</result>

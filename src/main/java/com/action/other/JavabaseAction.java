@@ -1,6 +1,8 @@
 package com.action.other;
 
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.HashMap;
 import java.util.Iterator;
 import java.util.List;
@@ -84,6 +86,57 @@ public class JavabaseAction extends ActionSupport {
         System.out.println(c.toString());
         
         return "type_change";
+    }
+    
+    public String dateSample() {
+        Date nowDate = new Date();
+        
+        //轉成毫秒數&秒數
+        long nowMillisecond = nowDate.getTime();
+        int nowSecond = (int)(nowMillisecond / 1000);
+        System.out.println(nowMillisecond);
+        System.out.println(nowSecond);
+        
+        //指定特定時間
+        String inputSpecifyDate = "2000-07-06 12:00:00";
+        SimpleDateFormat simpleDateFormat = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
+        Date specifyDate = null;
+        long specifyMillisecond = 0;
+        int specifySecond = 0;
+        
+        try {
+            specifyDate = simpleDateFormat.parse(inputSpecifyDate);
+            specifyMillisecond = specifyDate.getTime();
+            specifySecond = (int)(specifyMillisecond / 1000);
+            
+            System.out.println(specifyDate);
+            System.out.println(specifyMillisecond);
+            System.out.println(specifySecond);
+        } catch (Exception e) {
+            System.out.println(e);
+        }
+        
+        //日期間隔
+        long diffMillisecond = nowMillisecond - specifyMillisecond;
+        int diffDay = (int)(diffMillisecond / (1000*60*60*24));
+        System.out.println(diffMillisecond);
+        System.out.println(diffDay);
+        
+        //日期相加
+        Date destDate = null;
+        long destMillisecond = 0;
+        long addMillisecond = 7 * 24 * 60 * 60 * 1000;
+        String outputDestDate = "";
+        
+        destMillisecond = nowMillisecond + addMillisecond;
+        destDate = new Date(destMillisecond);
+        outputDestDate = simpleDateFormat.format(destDate);
+        
+        System.out.println(destMillisecond);
+        System.out.println(destDate);
+        System.out.println(outputDestDate);
+        
+        return "date_sample";
     }
 
     public String mapSample1() {
