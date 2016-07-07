@@ -11,5 +11,8 @@
     <action name="index" class="com.action.login.IndexAction" method="index">
       <result name="index_success">/WEB-INF/views/login/indexSuccess.jsp</result>
     </action>
+    <action name="after" class="com.action.login.IndexAction" method="after">
+      <result name="after_success">/WEB-INF/views/login/afterSuccess.jsp</result>
+    </action>
   </package>
 </struts>
