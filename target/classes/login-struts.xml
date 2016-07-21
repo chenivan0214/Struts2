@@ -4,14 +4,63 @@
   "http://struts.apache.org/dtds/struts-2.0.dtd">
 <struts>
   <package name="login" namespace="/login" extends="default">
-    <!-- 每個package可以有一個global-result -->
+    <!-- interceptor -->
+    <!--
+    Notice.
+    1.default-interceptor-ref can't together use with default-action-refs
+    2.default-interceptor-ref can't together use with other action
+    -->
+    <interceptors>
+      <interceptor name="global" class="com.interceptor.GlobalInterceptor"/>
+      <interceptor-stack name="globalInterceptor">
+        <interceptor-ref name="global"/>
+        <interceptor-ref name="defaultStack"/>
+      </interceptor-stack>
+      <interceptor name="sense" class="com.interceptor.SenseInterceptor"/>
+      <interceptor-stack name="indexInterceptor">
+        <interceptor-ref name="sense"/>
+        <interceptor-ref name="defaultStack"/>
+      </interceptor-stack>
+    </interceptors>
+    
+    <!-- default action -->
+    <!-- <default-action-ref name="before"/> -->
+    
+    <!-- global interceptor -->
+    <default-interceptor-ref name="globalInterceptor"/>
+    
+    <!-- global-result(每個package可以有一個) -->
+    <!--
     <global-results>
       <result name="error">/WEB-INF/views/login/globalError.jsp</result>
     </global-results>
+     -->
+    
+    <!-- exception -->
+    <!-- behind global-result -->
+    <!--
+    <global-exception-mappings>
+      <exception-mapping exception="java.lang.Exception" result="error"/>
+    </global-exception-mappings>
+     -->
+    
+    <!-- customed action -->
     <action name="index" class="com.action.login.IndexAction" method="index">
+      <interceptor-ref name="indexInterceptor"/>
       <result name="index_success">/WEB-INF/views/login/indexSuccess.jsp</result>
     </action>
+    <action name="before" class="com.action.login.IndexAction" method="before">
+      <result name="before_success" type="redirect">
+        <param name="location">index</param>
+        <!-- ${name} is OGNL here -->
+        <!-- <param name="location">${name}</param> -->
+        <param name="namespace">login</param>
+        <param name="type">${type}</param>
+        <param name="name">${name}</param>
+      </result>
+    </action>
     <action name="after" class="com.action.login.IndexAction" method="after">
+      <interceptor-ref name="globalInterceptor"/>
       <result name="after_success">/WEB-INF/views/login/afterSuccess.jsp</result>
     </action>
   </package>

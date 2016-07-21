@@ -141,7 +141,8 @@ public class JavabaseAction extends ActionSupport {
 
     public String mapSample1() {
         Map<Integer, String> map = new HashMap<Integer, String>();
-        
+        //TreeMap has sorted
+        //Map<Integer, String> map = new TreeMap<Integer, String>();
         for (int a = 0; a < 10; a++) {
             map.put(a, Integer.toString(a));
         }

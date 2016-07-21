@@ -5,7 +5,7 @@
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <title>Insert title here</title>
-<LINK rel=stylesheet type=text/css href="<s:url value="/"/>resources/css/global.css" />
+<LINK rel=stylesheet type=text/css href="<s:url value="/"/>resources/css/global.css"/>
 <style>
 </style>
 </head>
@@ -13,21 +13,21 @@
 
 <div id="container">
     <s:bean name="com.bean.other.TagBean" id="tagBean">
-        <s:param name="name" value="'me'" />
+        <s:param name="name" value="'me'"/>
     </s:bean>
     1.
-    <s:property value="#tagBean.name" />
+    <s:property value="#tagBean.name"/>
     <br/>
     2.
-    <s:include value="/WEB-INF/views/other/_nonui_include.jsp" />
+    <s:include value="/WEB-INF/views/other/_nonui_include.jsp"/>
     <br/>
     3.
-    <s:set name="sss" value="#session.tagBean" />
-    <s:property value="#sss.name" />
+    <s:set name="sss" value="#session.tagBean"/>
+    <s:property value="#sss.name"/>
     <br/>
     4.
     <s:push value="#session.tagBean">
-        <s:property value="name" />
+        <s:property value="name"/>
     </s:push>
     <br/>
     5.
@@ -53,14 +53,14 @@
     </s:iterator>
     <br/>
     8.
-    <s:set name="n" value="{'2', '4', '6'}" />
+    <s:set name="n" value="{'2', '4', '6'}"/>
     <s:iterator value="#n">
         <s:property />
     </s:iterator>
     <br/>
     9.
     <s:iterator value="%{listTagBean}" status="status">
-        <s:property value="name" /> - <s:property value="#status.count" /><br/>
+        <s:property value="name" /> - <s:property value="#status.count"/><br/>
     </s:iterator>
 </div>
 

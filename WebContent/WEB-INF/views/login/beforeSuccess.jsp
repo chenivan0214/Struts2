@@ -8,7 +8,7 @@
 </head>
 <body>
 
-<s:property value="type"/>
+before
 
 </body>
 </html>

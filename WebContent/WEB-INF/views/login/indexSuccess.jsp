@@ -9,20 +9,40 @@
 </head>
 <body>
 
-loginlogin
+Login page
 <br/>
-${sessionScope.type}
 <br/>
-<%
-//import com.opensymphony.xwork2.util.*
-ValueStack valueStack = (ValueStack)request.getAttribute("struts.valueStack");
-String type = (String)valueStack.findValue("type");
-%>
-<%=type %>
+*Session - EL - ${sessionScope.type}
 <br/>
-<s:property value="%{type}" />
-or
-<s:property value="type" />
-
+*Session - Tag + OGNL# - <s:property value="#session.type"/>
+<br/>
+*Request - EL - ${requestScope.type}
+<br/>
+*Request - Tag + OGNL - <s:property value="%{type}"/>
+<br/>
+*Request - Tag - <s:property value="type"/>
+<br/>
+*Request - Tag + OGNL - <s:property value="#request.type"/>
+<br/>
+*Request - Tag - <s:property value="name"/>
+<br/>
+<s:set name="array" value="#{'key1': 'value1', 'key2': 'value2'}"/>
+<br/>
+*OGNL - #取值用 - <s:property value="#array.key1"/>
+<br/>
+*OGNL - %計算用 - <s:property value="%{#array.key2 + '/' + #array.key2}"/>
+<br/>
+<br/>
+<form action="/Struts2/login/index?type=1" method="post">
+<input type="checkbox" name="hobby" value="1">hobby1<br/>
+<input type="checkbox" name="hobby" value="2">hobby2<br/>
+<input type="checkbox" name="hobby" value="3">hobby3<br/>
+<input type="submit"/>
+</form>
+<br/>
+<s:iterator value="hobbyMap" id="hobby" status="row">
+<s:property value="key"/>-<s:property value="value"/>
+<br/>
+</s:iterator>
 </body>
 </html>
