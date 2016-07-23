@@ -17,6 +17,8 @@ import org.apache.struts2.ServletActionContext;
 //import org.apache.struts2.ServletActionContext;
 import com.opensymphony.xwork2.ActionContext;
 import com.opensymphony.xwork2.ActionSupport;
+import com.utility.common.CheckUtility;
+import com.utility.common.DebugUtility;
 
 public class IndexAction extends ActionSupport {
     private static final long serialVersionUID = 1L;
@@ -102,6 +104,25 @@ public class IndexAction extends ActionSupport {
     
     public String after() {
         return "after_success";
+    }
+    
+    public String test() {
+        Map<String, Object> map = new TreeMap<String, Object>();
+        
+        Object num =  httpServletRequest.getParameter("num");
+        Object text =  httpServletRequest.getParameter("text");
+        map.put("num", num);
+        map.put("text", text);
+        
+        if (num != null && !num.equals("")) {
+            //System.out.println(CheckUtility.stringIsInteger((String)num));
+            System.out.println(CheckUtility.stringIsCustomFormat((String)text, "[A-Za-z]+$"));
+            //System.out.println(Integer.parseInt((String)map.get("num")));
+        }
+
+        DebugUtility.simpleOutput(map);
+        
+        return "test_success";
     }
     
 }

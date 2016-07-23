@@ -4,19 +4,19 @@ import java.util.Map;
 import java.util.TreeMap;
 
 import com.spring.bean.login.LoginIndexService;
-import com.utility.common.Debug;
+import com.utility.common.DebugUtility;
 
 public class LoginIndexImplement implements LoginIndexService {
-    private Map<String, String> mapDefineParam;
+    private Map<String, Integer> mapDefineParam;
     
     public LoginIndexImplement() {
-        mapDefineParam = new TreeMap<String, String>();
-        mapDefineParam.put("type", "1");
+        mapDefineParam = new TreeMap<String, Integer>();
+        mapDefineParam.put("type", new Integer(1));
     }
 
     @Override
-    public boolean checkType(String _type) {
-        return _type.equals(mapDefineParam.get("type")) ? true : false;
+    public boolean checkType(int _type) {
+        return new Integer(_type).equals(mapDefineParam.get("type")) ? true : false;
     }
 
 }

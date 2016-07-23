@@ -63,5 +63,8 @@
       <interceptor-ref name="globalInterceptor"/>
       <result name="after_success">/WEB-INF/views/login/afterSuccess.jsp</result>
     </action>
+    <action name="test" class="com.action.login.IndexAction" method="test">
+      <result name="test_success">/WEB-INF/views/login/testSuccess.jsp</result>
+    </action>
   </package>
 </struts>
