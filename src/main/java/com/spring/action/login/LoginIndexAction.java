@@ -2,25 +2,18 @@ package com.spring.action.login;
 
 import java.util.List;
 
-import javax.servlet.ServletContext;
-
-import org.apache.struts2.util.ServletContextAware;
-import org.hibernate.SessionFactory;
-
-import com.hibernate.dao.UserDaoImplement;
 import com.hibernate.model.UserModel;
-import com.opensymphony.xwork2.ModelDriven;
 import com.spring.bean.login.LoginIndexService;
+import com.spring.bean.login.dao.UserDaoService;
 import com.utility.common.DebugUtility;
 
-public class LoginIndexAction implements ModelDriven<UserModel>, ServletContextAware {
+public class LoginIndexAction {
     private int type;
-    private String name;
+    private String word;
+    private UserModel userModel;
+    private List<UserModel> userModelList;
     LoginIndexService loginIndexService;
-    //for hibernate
-    private ServletContext servlentContext;
-    UserModel userModel = new UserModel();
-    UserDaoImplement userDaoImplement = new UserDaoImplement(null);
+    UserDaoService userDaoService;
     
     public int getType() {
         return type;
@@ -30,60 +23,58 @@ public class LoginIndexAction implements ModelDriven<UserModel>, ServletContextA
         type = _type;
     }
     
-    public String getName() {
-        return name;
+    public String getWord() {
+        return word;
     }
     
-    public void setName(String _name) {
-        name = _name;
+    public void setWord(String _word) {
+        System.out.println(_word);
+        word = _word;
+    }
+    
+    public UserModel getUserModel() {
+        return userModel;
+    }
+    
+    public List<UserModel> getUserModelList() {
+        return userModelList;
     }
     
     public void setLoginIndexService(LoginIndexService _loginIndexService) {
         loginIndexService = _loginIndexService;
     }
-
-    @Override
-    public void setServletContext(ServletContext _servlentContext) {
-        servlentContext = _servlentContext;
+    
+    public void setUserDaoService(UserDaoService _userDaoService) {
+        userDaoService = _userDaoService;
     }
     
-    @Override
-    public UserModel getModel() {
-        return userModel;
-    }
-    
-    public String execute() throws Exception {
+    public String execute() {
         if (getType() != 0) {
             DebugUtility.simpleOutput(loginIndexService.checkType(getType()));
             DebugUtility.simpleOutput(getType());
-            DebugUtility.simpleOutput(getName());
+            DebugUtility.simpleOutput(getWord());
         }
         
-        //for hibernate
-        SessionFactory sessionFactory = (SessionFactory)servlentContext.getAttribute("SessionFactory");
-        UserDaoImplement userDaoImplement = new UserDaoImplement(sessionFactory);
+        userModelList = userDaoService.getById(getType());
+        DebugUtility.simpleOutput(userModelList);
+        userModel = null;
         
-        //List<UserModel> listUserModel = userDaoImplement.getById(11);
+        if (userModelList.size() != 0) {
+            userModel = userModelList.get(0);
+        }
         
-        //if (listUserModel.size() != 0) {
-        //    DebugUtility.simpleOutput(listUserModel);
-        //    System.out.println("Select one:" + listUserModel.get(0).getId());
-        //}
+        userModelList = userDaoService.getAll();
         
-        //List<UserModel> listUserModel = userDaoImplement.getAll();
+        if (userModelList != null) {
+            System.out.println("select all");
+            for (UserModel _userModel : userModelList) {
+                System.out.println(_userModel.getId() + "-" + _userModel.getName());
+            }
+        }
         
-        //if (listUserModel != null) {
-        //    System.out.println("select all");
-        //    for (UserModel _userModel : listUserModel) {
-        //        System.out.println(_userModel.getId() + "-" + _userModel.getName());
-        //    }
-        //}
-        
-        //System.out.println("update result:" + userDaoImplement.updateById(11, "update"));
-        
-        //System.out.println("delete result:" + userDaoImplement.deleteById(11));
-        
-        System.out.println("insert one result:" + userDaoImplement.insertOne("I am insert..."));
+        System.out.println("update result:" + userDaoService.updateById(getType(), "update"));
+        System.out.println("delete result:" + userDaoService.deleteById(getType()));
+        System.out.println("insert one result:" + userDaoService.insertOne("I am insert..."));
         
         return "success";
     }

@@ -20,6 +20,6 @@
   </listener>
   <!-- integrate with hibernate -->
   <listener>
-    <listener-class>com.hibernate.listener.HibernateServletContextListener</listener-class>
+    <listener-class>com.listener.HibernateServletContextListener</listener-class>
   </listener>
 </web-app>

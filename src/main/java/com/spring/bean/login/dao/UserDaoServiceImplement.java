@@ -1,7 +1,10 @@
-package com.hibernate.dao;
+package com.spring.bean.login.dao;
 
 import java.util.List;
 
+import javax.servlet.ServletContext;
+
+import org.apache.struts2.ServletActionContext;
 import org.hibernate.HibernateException;
 import org.hibernate.Query;
 import org.hibernate.Session;
@@ -10,15 +13,15 @@ import org.hibernate.Transaction;
 
 import com.hibernate.model.UserModel;
 
-public class UserDaoImplement implements UserDao {
-    private SessionFactory sessionFactory;
+public class UserDaoServiceImplement implements UserDaoService {
     
-    public UserDaoImplement(SessionFactory _sessionFactory) {
-        sessionFactory = _sessionFactory;
+    public UserDaoServiceImplement() {
     }
-    
+
     @Override
     public int insertOne(String _name) {
+        ServletContext servletContext = ServletActionContext.getServletContext(); 
+        SessionFactory sessionFactory = (SessionFactory)servletContext.getAttribute("SessionFactory");
         Session session = sessionFactory.openSession();
         Transaction transaction = null;
         int result = 0;
@@ -33,7 +36,8 @@ public class UserDaoImplement implements UserDao {
         }  catch (HibernateException e) {
             e.printStackTrace(); 
         } finally {
-            transaction.commit();session.close();
+            transaction.commit();
+            session.close();
         }
         
         return result;
@@ -42,6 +46,8 @@ public class UserDaoImplement implements UserDao {
     @SuppressWarnings("unchecked")
     @Override
     public List<UserModel> getById(int _id) {
+        ServletContext servletContext = ServletActionContext.getServletContext(); 
+        SessionFactory sessionFactory = (SessionFactory)servletContext.getAttribute("SessionFactory");
         Session session = sessionFactory.openSession();
         Transaction transaction = null;
         List<UserModel> listUserModel = null;
@@ -57,7 +63,8 @@ public class UserDaoImplement implements UserDao {
         } catch (HibernateException e) {
             e.printStackTrace(); 
         } finally {
-            transaction.commit();session.close();
+            transaction.commit();
+            session.close();
         }
         
         return listUserModel;
@@ -66,6 +73,8 @@ public class UserDaoImplement implements UserDao {
     @SuppressWarnings("unchecked")
     @Override
     public List<UserModel> getAll() {
+        ServletContext servletContext = ServletActionContext.getServletContext(); 
+        SessionFactory sessionFactory = (SessionFactory)servletContext.getAttribute("SessionFactory");
         Session session = sessionFactory.openSession();
         Transaction transaction = null;
         List<UserModel> listUserModel = null;
@@ -79,7 +88,8 @@ public class UserDaoImplement implements UserDao {
         } catch (HibernateException e) {
             e.printStackTrace(); 
         } finally {
-            transaction.commit();session.close();
+            transaction.commit();
+            session.close();
         }
         
         return listUserModel;
@@ -87,6 +97,8 @@ public class UserDaoImplement implements UserDao {
 
     @Override
     public int updateById(int _id, String _name) {
+        ServletContext servletContext = ServletActionContext.getServletContext(); 
+        SessionFactory sessionFactory = (SessionFactory)servletContext.getAttribute("SessionFactory");
         Session session = sessionFactory.openSession();
         Transaction transaction = null;
         int result = 0;
@@ -102,7 +114,8 @@ public class UserDaoImplement implements UserDao {
         }  catch (HibernateException e) {
             e.printStackTrace(); 
         } finally {
-            transaction.commit();session.close();
+            transaction.commit();
+            session.close();
         }
         
         return result;
@@ -110,6 +123,8 @@ public class UserDaoImplement implements UserDao {
 
     @Override
     public int deleteById(int _id) {
+        ServletContext servletContext = ServletActionContext.getServletContext(); 
+        SessionFactory sessionFactory = (SessionFactory)servletContext.getAttribute("SessionFactory");
         Session session = sessionFactory.openSession();
         Transaction transaction = null;
         int result = 0;
@@ -124,7 +139,8 @@ public class UserDaoImplement implements UserDao {
         }  catch (HibernateException e) {
             e.printStackTrace(); 
         } finally {
-            transaction.commit();session.close();
+            transaction.commit();
+            session.close();
         }
         
         return result;

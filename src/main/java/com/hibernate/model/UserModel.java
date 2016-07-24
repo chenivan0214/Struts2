@@ -1,8 +1,5 @@
 package com.hibernate.model;
 
-import java.util.ArrayList;
-import java.util.List;
-
 public class UserModel {
     private int id;
     private String name;

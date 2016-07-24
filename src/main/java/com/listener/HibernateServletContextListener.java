@@ -1,4 +1,4 @@
-package com.hibernate.listener;
+package com.listener;
 
 import java.net.URL;
 
@@ -16,7 +16,7 @@ public class HibernateServletContextListener implements ServletContextListener {
         SessionFactory sessionFactory = (SessionFactory) _servletContextEvent.getServletContext().getAttribute("SessionFactory");
         sessionFactory.close();
     }
-    
+
     @Override
     public void contextInitialized(ServletContextEvent _servletContextEvent) {
         URL url = HibernateServletContextListener.class.getResource("/hibernate/hibernate.cfg.xml");
@@ -26,4 +26,5 @@ public class HibernateServletContextListener implements ServletContextListener {
         SessionFactory sessionFactory = config.buildSessionFactory(serviceRegistry);
         _servletContextEvent.getServletContext().setAttribute("SessionFactory", sessionFactory);
     }
+
 }
