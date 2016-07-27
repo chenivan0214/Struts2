@@ -1,19 +1,24 @@
 package com.spring.action.login;
 
+import java.util.Map;
+
 import java.util.List;
 
 import com.hibernate.model.UserModel;
+import com.spring.bean.UseServletContext;
 import com.spring.bean.login.LoginIndexService;
 import com.spring.bean.login.dao.UserDaoService;
 import com.utility.common.DebugUtility;
+import com.utility.common.ReadUtility;
 
 public class LoginIndexAction {
     private int type;
     private String word;
     private UserModel userModel;
     private List<UserModel> userModelList;
-    LoginIndexService loginIndexService;
-    UserDaoService userDaoService;
+    private UseServletContext useServletContext;
+    private LoginIndexService loginIndexService;
+    private UserDaoService userDaoService;
     
     public int getType() {
         return type;
@@ -38,6 +43,10 @@ public class LoginIndexAction {
     
     public List<UserModel> getUserModelList() {
         return userModelList;
+    }
+    
+    public void setUseServletContext(UseServletContext _useServletContext) {
+        useServletContext = _useServletContext;
     }
     
     public void setLoginIndexService(LoginIndexService _loginIndexService) {
@@ -75,6 +84,15 @@ public class LoginIndexAction {
         System.out.println("update result:" + userDaoService.updateById(getType(), "update"));
         System.out.println("delete result:" + userDaoService.deleteById(getType()));
         System.out.println("insert one result:" + userDaoService.insertOne("I am insert..."));
+        
+        Map<String, String> resultMap = ReadUtility.readProperties("global");
+        DebugUtility.simpleOutput(resultMap);
+        DebugUtility.simpleOutput(resultMap.get("User.Name"));
+        
+        //ServletContext servletContext = ServletActionContext.getServletContext();
+        //DebugUtility.simpleOutput(servletContext.getAttribute("defaultUserName"));
+        
+        System.out.println(useServletContext.getAttribute("defaultUserName"));
         
         return "success";
     }

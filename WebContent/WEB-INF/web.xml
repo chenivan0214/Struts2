@@ -22,4 +22,8 @@
   <listener>
     <listener-class>com.listener.HibernateServletContextListener</listener-class>
   </listener>
+  <!-- after integration -->
+  <listener>
+    <listener-class>com.listener.ContextListener</listener-class>
+  </listener>
 </web-app>

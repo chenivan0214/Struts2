@@ -4,10 +4,14 @@
   xsi:schemaLocation="http://www.springframework.org/schema/beans
   http://www.springframework.org/schema/beans/spring-beans-2.5.xsd">
   
+  <bean id="initialized" class="com.spring.bean.Initialized"/>
+  <bean id="useServletContext" class="com.spring.bean.UseServletContext"/>
+  
   <bean id="loginIndexService" class="com.spring.bean.login.LoginIndexServiceImplement"/>
   <bean id="userDaoService" class="com.spring.bean.login.dao.UserDaoServiceImplement"/>
   
   <bean id="loginIndexAction" class="com.spring.action.login.LoginIndexAction">
+    <property name="useServletContext" ref="useServletContext"/>
     <property name="loginIndexService" ref="loginIndexService"/>
     <property name="userDaoService" ref="userDaoService"/>
   </bean>
