@@ -9,6 +9,10 @@
     <action name="loginIndex" class="loginIndexAction">
       <result name="success">/WEB-INF/views/spring/login/indexSuccess.jsp</result>
     </action>
+    
+    <action name="freemark" class="freemarkAction">
+      <result type="freemarker" name="success">/WEB-INF/views/spring/login/freemarkSuccess.ftl</result>
+    </action>
 
   </package>
 </struts>
