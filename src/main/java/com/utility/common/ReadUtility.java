@@ -9,7 +9,7 @@ import java.util.TreeMap;
 public class ReadUtility {
     public static Map<String, String> readProperties(String _filename) {
         Properties properties = new Properties();
-        String filePath = "/properties/" + _filename + ".properties";
+        String filePath = "/" + _filename + ".properties";
         System.out.println(filePath);
         InputStream inputStream = ReadUtility.class.getClassLoader().getResourceAsStream(filePath);
         Map<String, String> resultMap = new TreeMap<String, String>();

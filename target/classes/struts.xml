@@ -12,9 +12,9 @@
   <package name="default" namespace="/" extends="struts-default">
   </package>
   <!-- extra package -->
-  <include file="login-struts.xml"/>
-  <include file="showme-struts.xml"/>
-  <include file="other-struts.xml"/>
-  <include file="spring-struts.xml"/>
-  <include file="freemark-struts.xml"/>
+  <include file="/struts/login-struts.xml"/>
+  <include file="/struts/showme-struts.xml"/>
+  <include file="/struts/other-struts.xml"/>
+  <include file="/struts/spring-struts.xml"/>
+  <include file="/struts/freemark-struts.xml"/>
 </struts>
