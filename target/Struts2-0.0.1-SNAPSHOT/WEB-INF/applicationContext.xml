@@ -15,4 +15,8 @@
     <property name="loginIndexService" ref="loginIndexService"/>
     <property name="userDaoService" ref="userDaoService"/>
   </bean>
+  
+  <bean id="freemarkAction" class="com.spring.action.login.freemarkAction"/>
+  
+  <bean id="log4jAction" class="com.spring.action.login.log4jAction"/>
 </beans>

@@ -4,7 +4,7 @@
     <error-code>404</error-code>
     <location>/404.jsp</location>
   </error-page>
-  <display-name>Struts2</display-name>
+  <display-name>Struts Blank</display-name>
   <!-- struts filter -->
   <filter>
     <filter-name>struts2</filter-name>
