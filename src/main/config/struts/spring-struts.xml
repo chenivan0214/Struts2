@@ -17,6 +17,12 @@
     <action name="log4j" class="log4jAction">
       <result name="success">/WEB-INF/views/spring/login/log4jSuccess.jsp</result>
     </action>
+    
+    <action name="api" class="apiAction">
+      <result name="success" type="httpheader">
+        <param name="status">200</param>
+      </result>
+    </action>
 
   </package>
 </struts>

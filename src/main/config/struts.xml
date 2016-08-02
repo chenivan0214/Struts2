@@ -7,6 +7,7 @@
   <constant name="devMode" value="true"/>
   <constant name="struts.objectFactory" value="org.apache.struts2.spring.StrutsSpringObjectFactory"/>
   <!-- <constant name="struts.action.extension" value="html"/> -->
+  <constant name="struts.action.excludePattern" value="/rest/.*"/>
   <constant name="struts.serve.static.browserCache" value="false"/>
   <!-- default package -->
   <package name="default" namespace="/" extends="struts-default">

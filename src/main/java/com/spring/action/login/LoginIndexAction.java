@@ -83,7 +83,7 @@ public class LoginIndexAction {
         
         System.out.println("update result:" + userDaoService.updateById(getType(), "update"));
         System.out.println("delete result:" + userDaoService.deleteById(getType()));
-        System.out.println("insert one result:" + userDaoService.insertOne("I am insert..."));
+        System.out.println("insert one result:" + userDaoService.insertOne("I am 我我我..."));
         
         Map<String, String> resultMap = ReadUtility.readProperties("global");
         DebugUtility.simpleOutput(resultMap);
