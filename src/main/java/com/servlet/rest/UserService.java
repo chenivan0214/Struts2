@@ -14,7 +14,7 @@ import org.codehaus.jackson.map.ObjectMapper;
 import com.hibernate.model.UserModel;
 import com.servlet.dao.UserDaoImplement;
 import com.utility.common.DeleteUtility;
-import com.utility.common.FileUtility;
+//import com.utility.common.FileUtility;
 import com.utility.common.ReadUtility;
 import com.utility.common.WriteUtility;
 
@@ -43,6 +43,7 @@ public class UserService {
     @Path("/cache/{param}")
     @Produces("application/json;charset=utf-8")
     public Response opCache(@PathParam("param") String param) {
+        /*
         String targetPath = FileUtility.getWEBINFPath() + "/cache/db/user";
         String output = "";
         
@@ -68,5 +69,7 @@ public class UserService {
         }
         
         return Response.status(200).entity(output).build();
+        */
+        return Response.status(200).entity("").build();
     }
 }
