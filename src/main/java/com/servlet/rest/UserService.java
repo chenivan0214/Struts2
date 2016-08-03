@@ -20,7 +20,7 @@ public class UserService {
     
     @GET
     @Path("/list")
-    @Produces("application/json")
+    @Produces("application/json;charset=utf-8")
     public Response getMsg(@PathParam("param") String msg) {
         ObjectMapper objectMapper = new ObjectMapper();
         String output = "";
