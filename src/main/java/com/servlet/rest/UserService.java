@@ -2,6 +2,7 @@ package com.servlet.rest;
 
 import java.io.IOException;
 import java.util.List;
+import java.util.Map;
 
 import javax.ws.rs.GET;
 import javax.ws.rs.Path;
@@ -13,6 +14,9 @@ import org.codehaus.jackson.map.ObjectMapper;
 
 import com.hibernate.model.UserModel;
 import com.servlet.dao.UserDaoImplement;
+import com.utility.common.DebugUtility;
+import com.utility.common.DeleteUtility;
+import com.utility.common.ReadUtility;
 
 @Path("/user")
 public class UserService {
@@ -21,7 +25,7 @@ public class UserService {
     @GET
     @Path("/list")
     @Produces("application/json;charset=utf-8")
-    public Response getMsg(@PathParam("param") String msg) {
+    public Response getAll() {
         ObjectMapper objectMapper = new ObjectMapper();
         String output = "";
         List<UserModel> userModelList = userDaoImplement.getAll();
@@ -31,6 +35,21 @@ public class UserService {
         } catch (IOException e) {
             e.printStackTrace();
         }
+        
+        return Response.status(200).entity(output).build();
+    }
+    
+    @GET
+    @Path("/operateCache")
+    @Produces("application/json;charset=utf-8")
+    public Response operateCache(@PathParam("param") String param) {
+        Map<String, String> globalSettingMap = ReadUtility.readProperties("global");
+        String cacheFilePath = globalSettingMap.get("Cache.DB.Path") + "User";
+        String output = "";
+        
+        System.out.println(cacheFilePath);
+        
+        output = String.valueOf(DeleteUtility.deleteFile(cacheFilePath));
         
         return Response.status(200).entity(output).build();
     }
