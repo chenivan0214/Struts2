@@ -4,9 +4,13 @@
   xsi:schemaLocation="http://www.springframework.org/schema/beans
   http://www.springframework.org/schema/beans/spring-beans-2.5.xsd">
   
+  <!-- Initialized -->
   <bean id="initialized" class="com.spring.bean.Initialized"/>
+  
+  <!-- ServletContext -->
   <bean id="useServletContext" class="com.spring.bean.UseServletContext"/>
   
+  <!-- Login -->
   <bean id="loginIndexService" class="com.spring.bean.login.LoginIndexServiceImplement"/>
   <bean id="userDaoService" class="com.spring.bean.login.dao.UserDaoServiceImplement"/>
   
@@ -16,9 +20,15 @@
     <property name="userDaoService" ref="userDaoService"/>
   </bean>
   
+  <!-- Freemark -->
   <bean id="freemarkAction" class="com.spring.action.login.freemarkAction"/>
   
+  <!-- Log4j -->
   <bean id="log4jAction" class="com.spring.action.login.log4jAction"/>
   
+  <!-- Api -->
   <bean id="apiAction" class="com.spring.action.ApiAction"/>
+  
+  <!-- AngularJS -->
+  <bean id="angularJSAction" class="com.spring.action.AngularJSAction"/>
 </beans>

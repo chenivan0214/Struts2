@@ -9,19 +9,27 @@
     <action name="loginIndex" class="loginIndexAction">
       <result name="success">/WEB-INF/views/spring/login/indexSuccess.jsp</result>
     </action>
-    
+
+    <!-- Freemark -->
     <action name="freemark" class="freemarkAction">
       <result type="freemarker" name="success">/WEB-INF/views/spring/login/freemarkSuccess.ftl</result>
     </action>
     
+    <!-- log4j -->
     <action name="log4j" class="log4jAction">
       <result name="success">/WEB-INF/views/spring/login/log4jSuccess.jsp</result>
     </action>
     
+    <!-- Api -->
     <action name="api" class="apiAction">
       <result name="success" type="httpheader">
         <param name="status">200</param>
       </result>
+    </action>
+    
+    <!-- AngularJS -->
+    <action name="angularjsIndex" class="angularJSAction" method="index">
+      <result name="success">/WEB-INF/views/spring/angularjs/indexSuccess.jsp</result>
     </action>
 
   </package>
