@@ -9,11 +9,12 @@ import java.util.TreeMap;
 
 public class ReadUtility {
     public static String readFile(String _targetPath) {
-        String content = null;
+        String content = "";
         
         try {
+            @SuppressWarnings("resource")
             BufferedReader bufferedReader = new BufferedReader(new FileReader(_targetPath));
-            String buffer = null;
+            String buffer = "";
 
             while ((buffer = bufferedReader.readLine()) != null) {
                 content += buffer;

@@ -21,6 +21,20 @@
     <servlet-name>jersey-serlvet</servlet-name>
     <url-pattern>/rest/*</url-pattern>
   </servlet-mapping>
+  <!--
+  <filter>
+    <filter-name>ServletEncodingFilter</filter-name>
+    <filter-class>com.filter.ServletEncodingFilter</filter-class>
+    <init-param>
+      <param-name>encoding</param-name>
+      <param-value>UTF-8</param-value>
+    </init-param>
+  </filter>
+  <filter-mapping>
+    <filter-name>ServletEncodingFilter</filter-name>
+    <url-pattern>/rest/*</url-pattern>
+  </filter-mapping>
+   -->
   <!-- struts filter -->
   <display-name>Struts</display-name>
   <filter>
