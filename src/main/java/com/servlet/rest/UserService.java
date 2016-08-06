@@ -1,7 +1,6 @@
 package com.servlet.rest;
 
 import java.io.IOException;
-import java.net.URLEncoder;
 import java.util.List;
 
 import javax.ws.rs.GET;

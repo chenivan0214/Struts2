@@ -11,6 +11,7 @@ public class UserModel {
     public void setId(int _id) {
         this.id = _id;
     }
+    
     public String getName() {
         return name;
     }

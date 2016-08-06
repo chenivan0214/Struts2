@@ -13,7 +13,6 @@ import com.utility.common.HibernateUtility;
 
 public class UserDaoImplement implements UserDao {
 
-    @SuppressWarnings("unchecked")
     @Override
     public List<UserModel> getAll() {
         SessionFactory sessionFactory = HibernateUtility.getSessionFactory();
