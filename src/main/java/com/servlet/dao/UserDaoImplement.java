@@ -13,6 +13,7 @@ import com.utility.common.HibernateUtility;
 
 public class UserDaoImplement implements UserDao {
 
+    @SuppressWarnings("unchecked")
     @Override
     public List<UserModel> getAll() {
         SessionFactory sessionFactory = HibernateUtility.getSessionFactory();
@@ -24,7 +25,7 @@ public class UserDaoImplement implements UserDao {
         try {
             transaction = session.beginTransaction();
             Query query = session
-                          .createSQLQuery("select * from user")
+                          .createSQLQuery("select * from User")
                           .addEntity(UserModel.class);
             listUserModel = query.list();
         } catch (HibernateException e) {
