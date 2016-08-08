@@ -2,8 +2,12 @@ package com.servlet.rest;
 
 import java.io.IOException;
 import java.util.List;
+import java.util.Map;
+import java.util.TreeMap;
 
+import javax.ws.rs.FormParam;
 import javax.ws.rs.GET;
+import javax.ws.rs.POST;
 import javax.ws.rs.Path;
 import javax.ws.rs.PathParam;
 import javax.ws.rs.Produces;
@@ -69,5 +73,56 @@ public class UserService {
         }
         
         return Response.status(200).entity(output).build();
+    }
+    
+    @POST
+    @Path("/searchByPost")
+    @Produces("application/json;charset=utf-8")
+    public String searchByPost(@FormParam("name") String name) {
+        ObjectMapper objectMapper = new ObjectMapper();
+        Map<String, Object> returnMap = new TreeMap<String, Object>();
+        Map<String, String> parameterMap = new TreeMap<String, String>();
+        String output = "";
+        
+        parameterMap.put("name", name);
+        returnMap.put("result", true);
+        returnMap.put("parameter", parameterMap);
+        
+        try {
+            output = objectMapper.writeValueAsString(returnMap);
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+        
+        return output;
+    }
+    
+    @POST
+    @Path("/serarchByRawData")
+    @Produces("application/json;charset=utf-8")
+    public String serarchByRawData(String rawData) {
+        ObjectMapper objectMapper = new ObjectMapper();
+        Map<String, Object> returnMap = new TreeMap<String, Object>();
+        Map<String, String> parameterMap = new TreeMap<String, String>();
+        UserModel userModel = null;
+        String output = "";
+        
+        try {
+            userModel = objectMapper.readValue(rawData, UserModel.class);
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+        
+        parameterMap.put("name", userModel.getName());
+        returnMap.put("result", true);
+        returnMap.put("parameter", parameterMap);
+        
+        try {
+            output = objectMapper.writeValueAsString(returnMap);
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+        
+        return output;
     }
 }
